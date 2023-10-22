@@ -86,3 +86,40 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+console.log("Financial Analysis");
+console.log("--------------------");
+
+// This line initialises the totalMonths variable to 0. This variable will be used to keep track of the total number of months in from the dataset.
+var totalMonths = 0;
+
+for(var i=0; i< finances.length; i++){
+  // This line starts a for loop that iterates through the finances array. The loop runs from i = 0 (the first element in the array) to i < finances.length (the last element in the array).
+
+    totalMonths = totalMonths + 1; 
+    // Inside the loop, we simply increment the totalMonths variable by 1 for each iteration. This assumes that each element in the finances array represents a month, and you want to count the number of months in the dataset. So, for each element, we add 1 to totalMonths.
+
+}
+console.log("total number of month is " + totalMonths);
+
+
+
+
+// The net total amount of Profit/Losses over the entire period.
+
+
+
+// The average of the changes in Profit/Losses over the entire period.
+
+
+
+// You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+
+// (Total/(Number of months - 1))
+
+
+// The greatest increase in Profit/Losses (date and amount) over the entire period.
+
+
+
+// The greatest decrease in Profit/Losses (date and amount) over the entire period.
