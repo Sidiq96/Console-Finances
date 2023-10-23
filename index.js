@@ -173,6 +173,29 @@ console.log("-----------------");
 // This prints the month which had the greatest increase in profits and the amount
 
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
-// var maxDecrease = 0;
-// // I started by initiaslising a variable 
-// var maxDecreaseMonth = "";
+
+var maxDecrease = 0;
+// I started by initialising a variable called maxDecrease to 0. This variable will keep track of the largest increase in profits/losses.
+var maxDecreaseMonth = "";
+// To track the month associated with the maximum increase
+
+for (var i = 1; i < finances.length; i++) {
+  var currentMonth = finances[i][1];
+  // I extracted the profit/loss value of the current month and store it in the currentMonth variable.
+  var previousMonth = finances[i - 1][1];
+  // I extracted the profit/loss value of the current month and store it in the currentMonth variable.
+  var decrease = currentMonth - previousMonth;
+  // I calculated the decrease in profits/losses for the current month by subtracting the previous month's value from the current month's value. This tells us how much more money was made or lost compared to the previous month.
+  if (decrease < maxDecrease) {
+    // The If statement checks if the calculated decrease is greater than the current maximum decrease
+    maxDecrease = decrease;
+    maxDecreaseMonth = finances[i][0];
+    // Store the month associated with the maximum decrease
+  }
+}
+console.log(
+  "Greatest Decrease in Profits/Losses: ",
+  maxDecreaseMonth,
+  "($" + maxDecrease + ")"
+);
+// This prints the month which had the greatest decrease in profits and the amount
