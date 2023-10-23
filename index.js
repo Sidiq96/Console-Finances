@@ -118,13 +118,61 @@ for (var i = 0; i < finances.length; i++) {
   // I'm adding the profitFluctuation to the netTotal. If it's a profit, I add it, and if it's a loss, it will be subtract it from the total.
 }
 console.log("Net Total Profit/Loss: " + netTotal);
+console.log("------------------");
 
 // The average of the changes in Profit/Losses over the entire period.
 
-// You will need to track what the total change in Profit/Losses are from month to month and then find the average.
+var TotalChange = 0;
+// I start by setting up a variable called totalChange with an initial value of 0. This variable will keep track of all the changes in profit or loss.
 
-// (Total/(Number of months - 1))
+for (var i = 1; i < finances.length; i++) {
+  // We begin a loop that goes through each month's financial data, starting from the second month (because we need to compare it with the previous month). hence why the var is set from 1 and not zero
+
+  var currentMonth = finances[i][1];
+  // For each month, we find out how much money was made or lost and store it in a variable called current month
+
+  var previousMonth = finances[i - 1][1];
+  // We also found out how much money was made or lost in the previous month and store it in a variable called previous month
+  var change = currentMonth - previousMonth;
+  // I calculated the difference between this month's money and last month's money. This tells us how much more or less money was made this month compared to the previous one.
+  TotalChange += change;
+  // I've added the calculated change to our total changes. This keeps a running total of all the changes.
+}
+var averageChange = TotalChange / (finances.length - 1);
+// After the loop has seen all the months, it calculated the average change by dividing the total changes by the number of months it looked at, minus one. it subtracted one because the array doesn't have a previous month for the first month.
+console.log("Average Change " + averageChange);
+// this prints the average change
+console.log("------------------");
 
 // The greatest increase in Profit/Losses (date and amount) over the entire period.
 
+var maxIncrease = 0;
+// I started by initialising a variable called maxIncrease to 0. This variable will keep track of the largest increase in profits/losses.
+var maxIncreaseMonth = ""; // To track the month associated with the maximum increase
+
+for (var i = 1; i < finances.length; i++) {
+  var currentMonth = finances[i][1];
+  // I extracted the profit/loss value of the current month and store it in the currentMonth variable.
+  var previousMonth = finances[i - 1][1];
+  // I extracted the profit/loss value of the current month and store it in the currentMonth variable.
+  var increase = currentMonth - previousMonth;
+  // I calculated the increase in profits/losses for the current month by subtracting the previous month's value from the current month's value. This tells us how much more money was made or lost compared to the previous month.
+
+  if (increase > maxIncrease) {
+    // The If statement checks if the calculated increase is greater than the current maximum increase
+    maxIncrease = increase;
+    maxIncreaseMonth = finances[i][0]; // Store the month associated with the maximum increase
+  }
+}
+console.log(
+  "Greatest Increase in Profits/Losses: ",
+  maxIncreaseMonth,
+  "($" + maxIncrease + ")"
+);
+console.log("-----------------");
+// This prints the month which had the greatest increase in profits and the amount
+
 // The greatest decrease in Profit/Losses (date and amount) over the entire period.
+// var maxDecrease = 0;
+// // I started by initiaslising a variable 
+// var maxDecreaseMonth = "";
